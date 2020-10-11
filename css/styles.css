@@ -4,7 +4,7 @@ body{
 }
 header{
     text-align:center;
-    height:100vh;
+    height:40vh;
     display:flex;
     flex-direction: column;
     position:relative;
