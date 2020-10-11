@@ -16,11 +16,7 @@ header{
     color:white;
 }
 
-/* header div{
-    height:300px;
-} */
 
-}
 .btn-outline-primary{
     background-color:rgb(126,26,0);
     color:white;
@@ -47,6 +43,9 @@ button{
     margin-right:30px;
     border:silver solid 1px;
     border-radius: 5px;
+}
+#delivery{
+    display: none;
 }
 footer{
     text-align: center;

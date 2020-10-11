@@ -101,10 +101,28 @@ $(document).ready(function(){
         }
         else{
             newOrder = new Order(sizePrice,crustPrice,totalTopping)
-        $(this).last().text('Total price for your order: ' + newOrder.totalPrice());
+            ordersArr.push(newOrder.totalPrice());
+        $(this).last().text('Total price for your order: ' + newOrder.totalPrice() + "rwf");
         }
     });
     $('.container').on('click','#checkout',function(){
-        $('this').last().text(newOrder.ordersPrice());
+        let sum=0;
+        for (let index =0; index <ordersArr.length;index++) {
+            sum += ordersArr(index);
+        }
+        var deliveryChoice=confirm('Do you want your order delivered? The delivery cost is 500 rwf');
+        if(deliveryChoice==true){
+            prompt("Enter your address(house number,street number and city)");
+            alert("Your order will be delivered at your location");
+            $("#cart").text("you have made" +ordersArr.length + "order(s) which will be delivered at  total price")
+        
+        }
+        else{
+            $("#cart").text("You have made" + ordersArr.length+"order(s) worth a total price of " + sum + "rwf")
+
+        }
     });
-})
+    $(".container"),on ("click",'#add-order',function(){
+        $('#new-orders').append
+    }
+});
