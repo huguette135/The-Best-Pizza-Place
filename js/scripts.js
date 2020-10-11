@@ -13,6 +13,17 @@ Order.prototype.ordersPrice=function(){
     sum +=this.totalPrice();
     return sum;
 }
+// var imagesource=['img/eatingpizza.jpg','img/pizza2.jpeg','img/Pizzameat.jpg','img/Pizza salad.jpg'];
+// var index=0;
+// setInterval(function(){
+//     if(index===imagesource.length){
+//         index=0;
+//     }
+//     document.getElementById('pizza-images').style.backgroundImage= 'url("'+imagesource[index]+'")';
+//     index++;
+// },2000);
+//user interface
+
 $(document).ready(function(){
     $('#new-orders').on('click','#add-order',function(){
         $('#new-orders').append(
@@ -72,3 +83,28 @@ $(document).ready(function(){
         $('#medium-toppings').hide();   
         $('#large-toppings').show();
        }
+    });
+    $('#new-orders').on('submit','form',function(event){
+        event.preventDefault();
+        var grandTotal=[];
+        let sizePrice=parseInt($('#size').val());
+        let crustPrice=parseInt($('input:radio[name=crust]:checked').val());
+        let toppingPrices=$('input:checkbox[name="topping"]:checked').map(function(){
+            return $(this).val();
+        }).get();
+        var totalTopping=0;
+        toppingPrices.forEach(function(toppingPrice){
+            totalTopping += parseInt(toppingPrice);
+        });
+        if (totalTopping==0){
+            alert("Please do select the topping(s) you prefer");
+        }
+        else{
+            newOrder = new Order(sizePrice,crustPrice,totalTopping)
+        $(this).last().text('Total price for your order: ' + newOrder.totalPrice());
+        }
+    });
+    $('.container').on('click','#checkout',function(){
+        $('this').last().text(newOrder.ordersPrice());
+    });
+})

@@ -1,4 +1,5 @@
 
+
 body{
     margin:0;
 }
@@ -7,29 +8,32 @@ header{
     height:40vh;
     display:flex;
     flex-direction: column;
+    justify-content: space-between;
     position:relative;
     top:30px;
-    background-color:rgb(156,26,0);
+    background-color:rgb(126,26,0);
     padding:20px;
     color:white;
 }
-.grid{
-    display:flex;
-    justify-content: space-evenly;
+
+/* header div{
+    height:300px;
+} */
+
 }
 .btn-outline-primary{
-    background-color:rgb(156,26,0);
+    background-color:rgb(126,26,0);
     color:white;
     border:none;
 }
 h2,h4,button{
-    color:rgb(156,26,0);
+    color:rgb(126,26,0);
 }
 #medium-toppings,#large-toppings{
     display:none;
 }
 button{
-    background-color:rgb(156,26,0);
+    background-color:silver;
 }
 #float-image{
     width:30%;
@@ -46,9 +50,8 @@ button{
 }
 footer{
     text-align: center;
-    background-color:rgb(156,26,0);
+    background-color:rgb(126, 26, 0);
     color:white;
     padding:20px;
     width:100%;
 }
-
