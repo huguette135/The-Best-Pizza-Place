@@ -106,7 +106,6 @@ $(document).ready(function(){
         }
         else{
             $("#orders").text("You have made " + priceArray.length +" order(s) worth a total price of " + total + " rwf");
-            alert(priceArray.length);
         }
     });
 });
