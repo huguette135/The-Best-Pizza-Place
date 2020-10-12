@@ -8,21 +8,7 @@ function Order(size,crust,topping){
 Order.prototype.totalPrice=function(){
     return this.pizzaSize + this.pizzaCrust + this.pizzaTopping ;
 }
-var sum=0;
-Order.prototype.ordersPrice=function(){
-    sum +=this.totalPrice();
-    return sum;
-}
-// var imagesource=['img/eatingpizza.jpg','img/pizza2.jpeg','img/Pizzameat.jpg','img/Pizza salad.jpg'];
-// var index=0;
-// setInterval(function(){
-//     if(index===imagesource.length){
-//         index=0;
-//     }
-//     document.getElementById('pizza-images').style.backgroundImage= 'url("'+imagesource[index]+'")';
-//     index++;
-// },2000);
-//user interface
+var priceArray=[];
 
 $(document).ready(function(){
     $('#new-orders').on('click','#add-order',function(){
@@ -66,7 +52,7 @@ $(document).ready(function(){
     '<button class="btn btn-outline-success" id="checkout" >Checkout</button>'+
     '<div id="cart"></div>'
         )
-    })
+    });
     $('#new-orders').on('change','#size',function(){
         if($('#size').val()=='1500'){
             $('#small-toppings').show();
@@ -88,6 +74,7 @@ $(document).ready(function(){
         event.preventDefault();
         var grandTotal=[];
         let sizePrice=parseInt($('#size').val());
+        console.log(sizePrice);
         let crustPrice=parseInt($('input:radio[name=crust]:checked').val());
         let toppingPrices=$('input:checkbox[name="topping"]:checked').map(function(){
             return $(this).val();
@@ -101,28 +88,25 @@ $(document).ready(function(){
         }
         else{
             newOrder = new Order(sizePrice,crustPrice,totalTopping)
-            ordersArr.push(newOrder.totalPrice());
+            priceArray.push(newOrder.totalPrice());
         $(this).last().text('Total price for your order: ' + newOrder.totalPrice() + "rwf");
         }
     });
     $('.container').on('click','#checkout',function(){
-        let sum=0;
-        for (let index =0; index <ordersArr.length;index++) {
-            sum += ordersArr(index);
+        let total=0;
+        for (let index =0; index<priceArray.length;index++) {
+            total += priceArray[index];
         }
         var deliveryChoice=confirm('Do you want your order delivered? The delivery cost is 500 rwf');
         if(deliveryChoice==true){
             prompt("Enter your address(house number,street number and city)");
             alert("Your order will be delivered at your location");
-            $("#cart").text("you have made" +ordersArr.length + "order(s) which will be delivered at  total price")
-        
+            $("#orders").text("you have made " +priceArray.length + " order(s) which will be delivered at  total price of " + total);
+            alert(deliveryChoice);
         }
         else{
-            $("#cart").text("You have made" + ordersArr.length+"order(s) worth a total price of " + sum + "rwf")
-
+            $("#orders").text("You have made " + priceArray.length +" order(s) worth a total price of " + total + " rwf");
+            alert(priceArray.length);
         }
     });
-    $(".container"),on ("click",'#add-order',function(){
-        $('#new-orders').append
-    }
 });
